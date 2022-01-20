@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shino's Tokyo</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Shino's Tokyo">
+	<meta name="keywords" content="restaurant, menucard">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	<link href="{{asset('img/icon.png')}}" rel="shortcut icon"/>
+
+	
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+ 
+	
+	<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
+	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}"/>
+	<link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}"/>
+	<link rel="stylesheet" href="{{asset('css/slicknav.min.css')}}"/>
+
+	
+	<link rel="stylesheet" href="{{asset('css/style.css')}}"/>
+
+
+	
+
+</head>
+<body>
+	
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	
+	<header class="header-section clearfix">
+		<a href="{{path('home')}}" class="site-logo">
+			<img src="{{asset('img/shinoslogo.png')}}" alt="">
+		</a>
+		<div class="header-right">
+			
+			<div class="user-panel">
+                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+				    <a href="{{path('app_login')}}" class="register">Login</a>
+                {% endif %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				    <a href="{{path('app_logout')}}" class="register">Logout</a>
+                {% endif %}
+			</div> 
+		</div>
+		<ul class="main-menu">
+			<li><a href="{{path('home')}}">Home</a></li>
+			<li><a href="{{path('menu')}}">MenuCard</a></li>
+			<li><a href="{{path('order')}}">Order</a></li>
+			<li><a href="{{path('mail')}}">Contact</a></li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a href="#">Employee</a>
+				<ul class="sub-menu">
+					<li><a href="{{path('dish_index')}}">List</a></li>
+					<li><a href="{{path('dish_new')}}">Create</a></li>
+					<li><a href="{{path('order')}}">Order</a></li>
+					<li><a href="{{path('app_register')}}">Register</a></li>
+					<li><a href="{{path('app_logout')}}">Logout</a></li>
+				</ul>
+			</li>
+            {% endif %}
+		</ul>
+	</header>
+	
+
+	{% block body %}{% endblock %}
+
+	
+	<section class="intro-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="section-title">
+						<h2>Shino's Tokyo New Branche</h2>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<p>
+                         All of our menu items are inspired by _____ cuisine and have been created by our head chef, (CN), after studying authentic _____ cuisine in ____. Not only do we have fresh flown-in seafood from the northeast, but we also have a variety of handcrafted cocktails, wine, and beer to choose from.
+                         Come dine with us & experience an authentic ______ meal in an intimate dining space. We look forward to serving you!
+                    </p>
+					<a href="https://g.page/ISIMahdiaOfficiel?share" target="_blank" class="site-btn">Visit Now</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+
+	
+	
+	<footer class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 col-lg-7 order-lg-2">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>About us</h2>
+								<ul>
+									<li><a href="{{path('home')}}">Welcome</a></li>
+									<li><a href="{{path('menu')}}">Menu</a></li>
+									<li><a href="{{path('order')}}">Order</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Contact</h2>
+								<ul>
+									<li><a href="{{path('mail')}}">Waiter</a></li>
+									<li><a href="{{path('app_login')}}">Login</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-5 order-lg-1">
+					<img src="{{asset('img/shinoslogo.png')}}" alt="">
+					<div class="copyright">
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a>
+                    <div>
+                    <br>
+					<div class="social-links">
+						<a href="https://www.instagram.com/lajilidhia/" target="_blank"><i class="fa fa-instagram"></i></a>
+						<a href="https://www.facebook.com/dhia.lajili.7" target="_blank"><i class="fa fa-facebook"></i></a>
+						<a href="https://twitter.com/heronim32" target="_blank"><i class="fa fa-twitter"></i></a>
+						<a href="https://www.youtube.com/channel/UC7MykVvrMzSVqjlnEsiN6zw" target="_blank"><i class="fa fa-youtube"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{asset('js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('js/jquery.slicknav.min.js')}}"></script>
+	<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+	<script src="{{asset('js/mixitup.min.js')}}"></script>
+	<script src="{{asset('js/main.js')}}"></script>
+
+	</body>
+</html>

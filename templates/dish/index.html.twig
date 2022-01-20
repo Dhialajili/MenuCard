@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dish index{% endblock %}
+
+{% block body %}
+<div class="container">
+<br>
+    <h2>Dish index</h2>
+<br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dish in dishes %}
+            <tr>
+                <td>{{ dish.id }}</td>
+                <td><a href="{{path ('dish_show',{id: dish.id})}}">{{ dish.name }}</a></td>
+                <td>{{ dish.description }}</td>
+                <td>{{ dish.category }}</td>
+                <td>{{ dish.price }}$</td>
+                <td>
+                    <a href="{{ path('dish_show', {'id': dish.id}) }}">show</a>
+                    <a href="{{ path('dish_edit', {'id': dish.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('dish_new') }}">Create new</a>
+</div>
+{% endblock %}
